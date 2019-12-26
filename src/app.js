@@ -5,7 +5,7 @@ const publicDir = path.join(__dirname,'../public')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 app.use(express.static(publicDir))
-
+const port = process.env.PORT || 3000;
 app.set('view engine','ejs')
 app.set('views','./templates/views')
 app.get('',(req, res)=>{
@@ -72,6 +72,6 @@ app.get('*', (req, res)=>{
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port .'+port)
 })
