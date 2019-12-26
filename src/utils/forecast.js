@@ -12,9 +12,13 @@ const   forecast = (latitude, longitude, callback)=>{
     else{
         const body = response.body
         console.log(body)
+        const obj = body.daily.data[0]
         const temp = Number(body.currently.temperature);
         const temp1 = Math.floor((temp - 32) * 5/9 )
-        callback(undefined, body.daily.data[0].summary + ' It is currently ' + temp1 + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
+        const min = Math.floor( (obj.temperatureLow -32) *5/9  )
+        const max = Math.floor( (obj.temperatureHigh -32) *5/9)
+        const st = 'the minimum temperature is '+ min+ ' degree and highest temperature is '+max+ ' degree';
+        callback(undefined, body.daily.data[0].summary + ' It is currently ' + temp1 + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.'+st)
     }
 });
 }
