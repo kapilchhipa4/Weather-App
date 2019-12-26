@@ -7,7 +7,7 @@ const forecast = require('./utils/forecast')
 app.use(express.static(publicDir))
 
 app.set('view engine','ejs')
-app.set('views','../templates/views')
+app.set('views','./templates/views')
 app.get('',(req, res)=>{
     res.render('index',{
         title: "Weather app",
